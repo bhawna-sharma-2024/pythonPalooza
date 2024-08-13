@@ -1,0 +1,16 @@
+[
+    {
+        "firstname": "Anu",
+        "lastname": "Aggarwal",
+        "email": "anu.agga@gmail.com",
+        "location": "New Delhi"
+    },
+    {
+        "firstname": "Bhawna",
+        "lastname": "Sharma",
+        "email": "bhawna.sh@gmail.com",
+        "location": "New Delhi"
+    }
+
+
+]
