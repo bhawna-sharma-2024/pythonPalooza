@@ -1,1 +1,4 @@
 allure-results/
+tests/__pycache__/
+tests/.pytest_cache
+.test_log.log.swp
