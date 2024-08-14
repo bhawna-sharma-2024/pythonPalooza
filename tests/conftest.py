@@ -11,8 +11,11 @@ def env_type(request):
 
 pytest_plugins = [
    "fixtures.readFiles",
-   "fixtures.log_fixture"
+   "fixtures.log_fixture",
+   "fixtures.db_fixture"
+
 ]
+
 
 
 

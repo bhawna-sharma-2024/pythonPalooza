@@ -5,6 +5,7 @@ import requests
 import allure
 from pojo.user import *
 from faker import Faker
+from utilities.logging_decorator import log_function_call
 
 userId=None
 
@@ -24,7 +25,9 @@ def getJsonData(filename):
 @allure.testcase("TMS-456")
 @pytest.mark.parametrize("jsonData",getJsonData("createUserData.json"))
 @pytest.mark.dependency
-def test_post_api(jsonData,readConfig,logging_fixture):
+@log_function_call
+@pytest.mark.DBTest
+def test_post_api(jsonData,readConfig,logging_fixture,getConnection):
     #print(jsonData)
     logger = logging_fixture
     logger.info(f"Starting test with input_data: {jsonData}")
@@ -36,6 +39,23 @@ def test_post_api(jsonData,readConfig,logging_fixture):
     assert response.status_code==201
     assert "User has been created successfully" in response_json["message"]
     assert "userid" in response_json and response_json["userid"] is not None
+
+    #verifying response against DB and checking if row gets created in DB
+    cursor=getConnection.cursor()
+    print(f"SELECT * FROM expense_tracker.budget_user where email like '%{jsonData['email']}%'")
+    cursor.execute(f"SELECT * FROM expense_tracker.budget_user where email like '%{jsonData['email']}%'")
+    results=cursor.fetchone()
+    print(f"The results are {results}")
+    assert len(results) >= 1, f"Expected db row creation for {jsonData.email} "
+    if not jsonData['firstname'] in results:
+        assert False,f"Expected {jsonData['firstname']} in DB results"
+    if not jsonData['lastname'] in results:
+        assert False,f"Expected {jsonData['lastname']} in DB results"
+    if not jsonData['location'] in results:
+        assert False,f"Expected {jsonData['location']} in DB results"
+
+
+
 
 
 
@@ -51,6 +71,7 @@ def test_getEnvironmentSettings(env_type):
 @allure.testcase("TMS-1456")
 @pytest.mark.sanity
 @pytest.mark.dependency()
+@log_function_call
 def test_given_userswithsameemail_thenfail(readConfig,logging_fixture):
     logger = logging_fixture
     fake=Faker()
@@ -74,6 +95,7 @@ def test_given_userswithsameemail_thenfail(readConfig,logging_fixture):
         logger.info(f"The response message is {response.json()['message']}")
     logger.info(f"The response message is {response.json()['message']}")
 
+@log_function_call
 @pytest.mark.sanity
 @pytest.mark.dependency(depends=["test_given_userswithsameemail_thenfail"])
 def test_getIncome(readConfig,logging_fixture):
