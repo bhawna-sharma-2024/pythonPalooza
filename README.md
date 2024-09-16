@@ -2,12 +2,12 @@
 # pythonPalooza
 The python code repository 
 This is a sample python project that touch upon all the concepts used in python
--> Fixtures
--> Data handling
--> POJOs
--> Adding command line paramters
--> Marking tests and dividng into groups
--> decorators
+- Fixtures
+- Data handling
+- POJOs
+- Adding command line paramters
+- Marking tests and dividng into groups
+- decorators
 
 Project Structure
  test
