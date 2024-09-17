@@ -26,11 +26,11 @@ test
 
 # How to Run the Project
 ## To run the tests, execute the following command:
-pytest -m DBTest --env-type=staging --alluredir=allure-results
+<p><span style="background-color: black; color: white; font-weight: bold;">pytest -m DBTest --env-type=staging --alluredir=allure-results</span></p>
 
 # How to View Allure Reports
 ## After running the tests, generate and view Allure reports using:
-allure serve allure-report
+<p><span style="background-color: black; color: white; font-weight: bold;">allure serve allure-report</span></p> ```
 
 
  
