@@ -30,7 +30,7 @@ test
 
 # How to View Allure Reports
 **After running the tests, generate and view Allure reports using:**
-<p><span style="background-color: black; color: white; font-weight: bold;">allure serve allure-report</span></p> ```
+<p><span style="background-color: black; color: white; font-weight: bold;">allure serve allure-report</span></p>
 
 
  
