@@ -23,7 +23,7 @@ test
  ├── configuration # Add environment-specific configurations
  ├── conftest.py  
  └── testclasses
-
+```
 # How to Run the Project
 ## To run the tests, execute the following command:
 <p><span style="background-color: black; color: white; font-weight: bold;">pytest -m DBTest --env-type=staging --alluredir=allure-results</span></p>
