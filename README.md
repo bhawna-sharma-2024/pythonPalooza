@@ -25,11 +25,11 @@ test
  └── testclasses
 ```
 # How to Run the Project
-## To run the tests, execute the following command:
+**To run the tests, execute the following command:**
 <p><span style="background-color: black; color: white; font-weight: bold;">pytest -m DBTest --env-type=staging --alluredir=allure-results</span></p>
 
 # How to View Allure Reports
-## After running the tests, generate and view Allure reports using:
+**After running the tests, generate and view Allure reports using:**
 <p><span style="background-color: black; color: white; font-weight: bold;">allure serve allure-report</span></p> ```
 
 
