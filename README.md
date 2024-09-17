@@ -16,7 +16,7 @@ This is a sample Python project that touches upon all the concepts used in Pytho
 
 ```bash
 test
- ├── data         # Store JSON files, also has config file to read values depending upon the test environment
+ ├── data         # Store JSON files
  ├── fixture      # Define all the fixtures in this folder
  ├── pojo         # Contains classes that map JSON requests or responses to classes
  ├── utilities    # Contains utility methods
