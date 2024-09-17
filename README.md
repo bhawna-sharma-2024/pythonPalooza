@@ -22,7 +22,7 @@ test
  ├── utilities    # Contains utility methods
  ├── configuration # Add environment-specific configurations
  ├── conftest.py  
- └── testclasses
+ └── testModules  # stores all the test files
 ```
 # How to Run the Project
 **To run the tests, execute the following command:**
@@ -30,7 +30,12 @@ test
 
 # How to View Allure Reports
 **After running the tests, generate and view Allure reports using:**
-<p><span style="background-color: black; color: white; font-weight: bold;">allure serve allure-report</span></p>
+<p style="background-color: black; "><span style="color: white; font-weight: bold;">allure serve allure-report</span></p>
+
+![image](https://github.com/user-attachments/assets/57e45a2b-132c-45af-bb90-8fd2f26ffd4c)
+
+
+
 
 
  
