@@ -4,7 +4,7 @@ import os
 
 @pytest.fixture(scope="session")
 def readConfig(env_type):
-    with open("tests/data/stageconfig.json","r") as f:
+    with open("tests/configurations/config.json","r") as f:
         json_file=json.load(f)
     for item in json_file:
         if env_type in item:
