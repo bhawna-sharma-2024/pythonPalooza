@@ -16,23 +16,19 @@ def getJsonData(filename):
         json_file = json.load(f)
     return json_file
 
-@allure.title("Test Authentication")
-@allure.description("This test attempts to log into the website using a login and a password. Fails if any error happens.\n\nNote that this test does not test 2-Factor Authentication.")
-@allure.tag("NewUI", "Essentials", "Authentication")
+@allure.title("Test adding user")
+@allure.description("This test attempts to add user in system ")
+@allure.tag("Sanity", "Essentials")
 @allure.severity(allure.severity_level.CRITICAL)
-@allure.label("owner", "John Doe")
-@allure.issue("AUTH-123")
-@allure.testcase("TMS-456")
+@allure.label("owner", "Bhawna Sharma")
+@allure.testcase("TMS-142")
 @pytest.mark.parametrize("jsonData",getJsonData("createUserData.json"))
 @pytest.mark.dependency
 @log_function_call
 @pytest.mark.DBTest
-def test_post_api(jsonData,readConfig,logging_fixture,getConnection):
-    #print(jsonData)
+def test_creatinguser(jsonData,readConfig,logging_fixture,getConnection):
     logger = logging_fixture
     logger.info(f"Starting test with input_data: {jsonData}")
-    logger.warning(f"Starting test with input_data: {jsonData}")
-    logger.error(f"Starting test with input_data: {jsonData}")
     response=requests.post(readConfig.get("baseurl")+"/createuser/",data=jsonData)
     response_json = response.json()
     print(f"The response message is: {response.json()}")
@@ -56,9 +52,6 @@ def test_post_api(jsonData,readConfig,logging_fixture,getConnection):
 
 
 
-
-
-
 def test_getEnvironmentSettings(env_type):
     print(f"The command line environment value is {env_type}")
 
@@ -66,8 +59,7 @@ def test_getEnvironmentSettings(env_type):
 @allure.description("This test attempts to create 2 users with same email")
 @allure.tag("NewUI", "Essentials", "Authentication")
 @allure.severity(allure.severity_level.CRITICAL)
-@allure.label("owner", "John Doe")
-@allure.issue("AUTH-1213")
+@allure.label("owner", "Bhawna Sharma")
 @allure.testcase("TMS-1456")
 @pytest.mark.sanity
 @pytest.mark.dependency()
@@ -95,6 +87,16 @@ def test_given_userswithsameemail_thenfail(readConfig,logging_fixture):
         logger.info(f"The response message is {response.json()['message']}")
     logger.info(f"The response message is {response.json()['message']}")
 
+
+
+
+
+@allure.title("Test adding income and check the created income value")
+@allure.description("This test attempts to add income to the already existing user in system ")
+@allure.tag("NewUI", "Essentials")
+@allure.severity(allure.severity_level.CRITICAL)
+@allure.label("owner", "Bhawna Sharma")
+@allure.testcase("TMS-1426")
 @log_function_call
 @pytest.mark.sanity
 @pytest.mark.dependency(depends=["test_given_userswithsameemail_thenfail"])
